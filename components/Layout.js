@@ -3,6 +3,7 @@ import Head from "next/head";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import { useRouter } from "next/router";
+import Script from "next/script";
 
 const Layout = ({ children }) => {
   // Hook de Routing
@@ -22,8 +23,9 @@ const Layout = ({ children }) => {
           referrerpolicy="no-referrer"
         />
         <meta name="theme-color" content="rgb(15 23 42)" />
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <Script src="https://cdn.tailwindcss.com"></Script>
+
+        <Script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></Script>
       </Head>
 
       {router.pathname === "/login" || router.pathname === "/nuevacuenta" ? (
