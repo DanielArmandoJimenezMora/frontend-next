@@ -23,9 +23,6 @@ const Layout = ({ children }) => {
           referrerpolicy="no-referrer"
         />
         <meta name="theme-color" content="rgb(15 23 42)" />
-        <Script src="https://cdn.tailwindcss.com"></Script>
-
-        <Script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></Script>
       </Head>
 
       {router.pathname === "/login" || router.pathname === "/nuevacuenta" ? (
@@ -42,6 +39,9 @@ const Layout = ({ children }) => {
               {children}
             </main>
           </div>
+          <Script src="https://cdn.tailwindcss.com"></Script>
+
+          <Script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></Script>
         </div>
       )}
     </Fragment>
