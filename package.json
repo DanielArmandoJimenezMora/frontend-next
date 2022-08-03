@@ -29,6 +29,7 @@
     "react-select": "^5.3.2",
     "recharts": "^2.1.10",
     "styled-components": "^5.3.5",
+    "sweetalert2": "^11.4.24",
     "yarn": "^1.22.19",
     "yup": "^0.30.0"
   },
