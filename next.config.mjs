@@ -1,5 +1,5 @@
-/** @type {import('next').NextConfig} */
-import withPWA from "next-pwa";
+/* @type {import('next').NextConfig} */
+/* import withPWA from "next-pwa";
 
 export default withPWA({
   pwa: {
@@ -8,3 +8,4 @@ export default withPWA({
     skipWaiting: true,
   },
 });
+ */
