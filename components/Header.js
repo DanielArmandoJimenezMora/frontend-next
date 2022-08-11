@@ -90,7 +90,7 @@ const Header = () => {
             Cerrar sesión
           </button>
           <Img>
-            <Image width={26} height={20} src="/img/icon/sign.png" />
+            <Image width={26} height={20} src="/img/icon/sign.png" alt="Salir"/>
           </Img>
         </Heading>
       </Nav>
