@@ -84,7 +84,7 @@ const Sidebar = () => {
       <Heading>
         {/* Logo */}
         <div>
-          <Image width={84} height={104} src="/img/logo.png" />
+          <Image width={84} height={104} src="/img/logo.png" alt="Logo" />
         </div>
         {/* Nombre empresa */}
         <div className="mb-8">
@@ -101,11 +101,11 @@ const Sidebar = () => {
           <ItemImg>
             <div>
               {genero === "Hombre" ? (
-                <Image width={80} height={80} src="/img/icon/user1.png" />
+                <Image width={80} height={80} src="/img/icon/user1.png" alt="Usuario" />
               ) : genero === "Mujer" ? (
-                <Image width={80} height={80} src="/img/icon/user2.png" />
+                <Image width={80} height={80} src="/img/icon/user2.png" alt="Usuario" />
               ) : genero === "Otro" ? (
-                <Image width={100} height={110} src="/img/icon/user3.png" />
+                <Image width={100} height={110} src="/img/icon/user3.png" alt="Usuario" />
               ) : null}
             </div>
             <div>
@@ -128,7 +128,7 @@ const Sidebar = () => {
           <Link href="/pedidos">
             <Item>
               <div>
-                <Image width={20} height={28} src="/img/icon/pedido.png" />
+                <Image width={20} height={28} src="/img/icon/pedido.png" alt="Pedidos"/>
               </div>
               <ItemText className="text-white block">Pedidos</ItemText>
             </Item>
@@ -146,7 +146,7 @@ const Sidebar = () => {
           <Link href="/">
             <Item>
               <div>
-                <Image width={26} height={22} src="/img/icon/cliente.png" />
+                <Image width={26} height={22} src="/img/icon/cliente.png" alt="Clientes" />
               </div>
               <ItemText className="text-white block">Clientes</ItemText>
             </Item>
@@ -169,6 +169,7 @@ const Sidebar = () => {
                     width={22}
                     height={26}
                     src="/img/icon/proveedores.png"
+                    alt="Proveedores"
                   />
                 </div>
                 <ItemText className="text-white block">Proveedores</ItemText>
@@ -188,7 +189,7 @@ const Sidebar = () => {
           <Link href="/productos">
             <Item>
               <div>
-                <Image width={26} height={22} src="/img/icon/carrito.png" />
+                <Image width={26} height={22} src="/img/icon/carrito.png" alt="Productos" />
               </div>
               <ItemText className="text-white block">Productos</ItemText>
             </Item>
@@ -206,7 +207,7 @@ const Sidebar = () => {
             <Link href="/usuarios">
               <Item>
                 <div>
-                  <Image width={26} height={22} src="/img/icon/user+.png" />
+                  <Image width={26} height={22} src="/img/icon/user+.png" alt="Usuarios" />
                 </div>
                 <ItemText className="text-white block">Usuarios</ItemText>
               </Item>
