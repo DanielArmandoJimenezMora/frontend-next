@@ -37,7 +37,12 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "8.15.0",
-    "eslint-config-next": "12.1.6"
+    "eslint": "^8.21.0",
+    "eslint-config-next": "12.1.6",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.4",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.30.1"
   }
 }
