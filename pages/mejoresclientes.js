@@ -120,7 +120,7 @@ const MejoresClientes = () => {
             {/* Todos */}
             <p className="flex shadow mr-4 mt-2 my-2 bg-white border-l-4 border-green-700 text-green-700 p-2 text-sm rounded font-bold w-2/4">
               <svg
-                class="w-11 h-11"
+                className="w-11 h-11"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +139,7 @@ const MejoresClientes = () => {
             {/* Hombres */}
             <p className="flex shadow mt-2 my-2 bg-white border-l-4 border-cyan-700 text-cyan-700 p-2 text-sm rounded font-bold w-2/4">
               <svg
-                class="w-11 h-11"
+                className="w-11 h-11"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -160,7 +160,7 @@ const MejoresClientes = () => {
             {/* Otros */}
             <p className="flex shadow mr-4 mt-1 my-2 bg-white border-l-4 border-purple-700 text-purple-700 p-2 text-sm rounded font-bold w-2/4">
               <svg
-                class="w-11 h-11"
+                className="w-11 h-11"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -179,7 +179,7 @@ const MejoresClientes = () => {
             {/* Mujeres */}
             <p className="flex shadow mt-1 my-2 bg-white border-l-4 border-pink-500 text-pink-500 p-2 text-sm rounded font-bold w-2/4">
               <svg
-                class="w-11 h-11"
+                className="w-11 h-11"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
