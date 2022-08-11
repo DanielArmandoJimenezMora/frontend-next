@@ -1,15 +1,14 @@
-import React from "react";
-import { useRouter } from "next/router";
-import Layout from "../../components/Layout";
-import styled from "@emotion/styled";
-import Link from "next/link";
-import Router from "next/router";
-import { gql, useQuery, useMutation } from "@apollo/client";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import Swal from "sweetalert2";
-import Cargando from "../../components/Cargando";
-import NoSesion from "../../components/NoSesion";
+import React from 'react'
+import Router, { useRouter } from 'next/router'
+import Layout from '../../components/Layout'
+import styled from '@emotion/styled'
+import Link from 'next/link'
+import { gql, useQuery, useMutation } from '@apollo/client'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+import Swal from 'sweetalert2'
+import Cargando from '../../components/Cargando'
+import NoSesion from '../../components/NoSesion'
 
 /* GraphQL */
 const OBTENER_CLIENTE = gql`
