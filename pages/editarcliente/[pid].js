@@ -190,7 +190,7 @@ const EditarCliente = () => {
             }}
           >
             {(props) => {
-              console.log(props)
+              console.log(props);
               return (
                 <form
                   className="bg-white shadow-md px-8 pt-6 pb-8 mb-4"
@@ -202,9 +202,8 @@ const EditarCliente = () => {
                       htmlFor="nombre"
                     >
                       <Obligatorio>*</Obligatorio> Nombre
-                      {props.touched.nombre && props.errors.nombre ? 
-                      (
-                        <Error className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
+                      {props.touched.nombre && props.errors.nombre 
+                      ? (<Error className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
                           <p>
                             <span className="font-bold">Error: </span>
                             {props.errors.nombre}
