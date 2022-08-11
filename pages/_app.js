@@ -1,8 +1,8 @@
-import { ApolloProvider } from '@apollo/client';
-import client from '../config/apollo';
-import PedidoState from '../context/pedidos/PedidoState';
+import { ApolloProvider } from "@apollo/client";
+import client from "../config/apollo";
+import PedidoState from "../context/pedidos/PedidoState";
 
-const MyApp = ({ Component, pageProps }) => {
+function MyApp({ Component, pageProps }) {
   return (
     <ApolloProvider client={client}>
       <PedidoState>
@@ -10,6 +10,6 @@ const MyApp = ({ Component, pageProps }) => {
       </PedidoState>
     </ApolloProvider>
   );
-};
+}
 
 export default MyApp;
