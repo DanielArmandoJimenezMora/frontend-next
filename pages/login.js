@@ -257,11 +257,11 @@ const Login = () => {
       <Bgb>
         <LoginContainer>
           <ImageContainer>
-            <Image width={457} height={551} src="/img/lobo.png" />
+            <Image width={457} height={551} src="/img/lobo.png" alt="Sale Admin Pro" />
           </ImageContainer>
           <LoginInfoContainer>
             <LogoResponsive>
-              <Image width={120} height={120} src="/icon-192x192.png" />
+              <Image width={120} height={120} src="/icon-192x192.png" alt="Sale Admin Pro/>
             </LogoResponsive>
             <Title>Iniciar sesión</Title>
             <InputsContainer onSubmit={formik.handleSubmit}>
