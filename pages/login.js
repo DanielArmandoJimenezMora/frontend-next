@@ -265,7 +265,7 @@ const Login = () => {
             </LogoResponsive>
             <Title>Iniciar sesión</Title>
             <InputsContainer onSubmit={formik.handleSubmit}>
-              <Label htmlFor="nombre">Usuario</Label>
+              <Label>Usuario</Label>
               <Input
                 className="focus:outline-none focus:shadow-outline"
                 id="email"
@@ -283,7 +283,7 @@ const Login = () => {
                   </p>
                 </Error>
               ) : null}
-              <Label htmlFor="password">Password</Label>
+              <Label>Password</Label>
               <Input
                 className="focus:outline-none focus:shadow-outline"
                 id="password"
