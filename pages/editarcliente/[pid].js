@@ -24,7 +24,7 @@ const OBTENER_CLIENTE = gql`
       genero
     }
   }
-`;
+`
 
 const ACTUALIZAR_CLIENTE = gql`
   mutation actualizarCliente($id: ID!, $input: ClienteInput) {
@@ -39,7 +39,7 @@ const ACTUALIZAR_CLIENTE = gql`
       genero
     }
   }
-`;
+`
 
 const OBTENER_CLIENTES_USUARIO = gql`
   query ObtenerClientesVendedor {
@@ -47,23 +47,23 @@ const OBTENER_CLIENTES_USUARIO = gql`
       id
     }
   }
-`;
+`
 
 /* Estilos */
 const R = styled.div`
   text-align: right;
-`;
+`
 
 const Obligatorio = styled.span`
   color: red;
   font-weight: bold;
-`;
+`
 
 const Error = styled.div`
   width: 100%;
   text-align: left;
   padding: 8px;
-`;
+`
 
 const Select = styled.select`
   width: 100%;
@@ -75,62 +75,62 @@ const Select = styled.select`
   font-weight: 300;
   letter-spacing: 1px;
   box-sizing: border-box;
-`;
+`
 
 const Container = styled.div`
   height: 80vh;
   border-radius: 10px !important;
-`;
+`
 
 const EditarCliente = () => {
-  const router = useRouter();
+  const router = useRouter()
   const {
-    query: { pid },
-  } = router;
-  let id = pid;
+    query: { pid }
+  } = router
+  const id = pid
 
   // Consultar para obtener el cliente
   const { data, loading, client } = useQuery(OBTENER_CLIENTE, {
-    variables: { id },
-  });
-  const datosC = useQuery(OBTENER_CLIENTES_USUARIO);
-  const dataC = datosC.data;
-  const loadingC = datosC.loading;
+    variables: { id }
+  })
+  const datosC = useQuery(OBTENER_CLIENTES_USUARIO)
+  const dataC = datosC.data
+  const loadingC = datosC.loading
 
   // actualizar el cliente
-  const [actualizarCliente] = useMutation(ACTUALIZAR_CLIENTE);
+  const [actualizarCliente] = useMutation(ACTUALIZAR_CLIENTE)
 
   // Schema de validacion
   const schemaValidation = Yup.object({
-    nombre: Yup.string().required("El nombre del cliente es obligatorio"),
+    nombre: Yup.string().required('El nombre del cliente es obligatorio'),
     apellido: Yup.string(),
-    telefono: Yup.string().required("El telefono del cliente es obligatorio"),
-    direccion: Yup.string().required("La direccion del cliente es obligatoria"),
+    telefono: Yup.string().required('El telefono del cliente es obligatorio'),
+    direccion: Yup.string().required('La direccion del cliente es obligatoria'),
     nombreNegocio: Yup.string().required(
-      "El nombre del negocio es obligatorio"
+      'El nombre del negocio es obligatorio'
     ),
-    email: Yup.string().required("El email del cliente es obligatorio"),
-    genero: Yup.string().required("El genero del cliente es obligatorio"),
-  });
+    email: Yup.string().required('El email del cliente es obligatorio'),
+    genero: Yup.string().required('El genero del cliente es obligatorio')
+  })
 
-  if (loading || loadingC) return <Cargando />;
+  if (loading || loadingC) return <Cargando />
 
   if (!data) {
     return (id) => {
       Router.push({
-        pathname: "/editarcliente/[id]",
-        query: { id },
-      });
-    };
+        pathname: '/editarcliente/[id]',
+        query: { id }
+      })
+    }
   }
 
   if (!dataC.obtenerClientesVendedor) {
-    client.clearStore();
-    router.push("/login");
-    return <NoSesion />;
+    client.clearStore()
+    router.push('/login')
+    return <NoSesion />
   }
 
-  const { obtenerCliente } = data;
+  const { obtenerCliente } = data
 
   // Modificar el cliente en la base de datos
   const actualizarInfoCliente = async (valores) => {
@@ -141,8 +141,8 @@ const EditarCliente = () => {
       direccion,
       nombreNegocio,
       email,
-      genero,
-    } = valores;
+      genero
+    } = valores
     try {
       await actualizarCliente({
         variables: {
@@ -154,23 +154,23 @@ const EditarCliente = () => {
             direccion,
             nombreNegocio,
             email,
-            genero,
-          },
-        },
-      });
-      //console.log(data);
+            genero
+          }
+        }
+      })
+
       // Alerta de actualizacion
       Swal.fire(
-        "Cliente actualizado",
-        "El cliente se actualizo correctamente",
-        "success"
-      );
+        'Cliente actualizado',
+        'El cliente se actualizo correctamente',
+        'success'
+      )
       // TODO: redireccionar a la pagina de clientes
-      router.push("/");
+      router.push('/')
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   return (
     <Layout>
@@ -186,11 +186,11 @@ const EditarCliente = () => {
             enableReinitialize
             initialValues={obtenerCliente}
             onSubmit={async (valores) => {
-              actualizarInfoCliente(valores);
+              actualizarInfoCliente(valores)
             }}
           >
             {(props) => {
-              console.log(props);
+              console.log(props)
               return (
                 <form
                   className="bg-white shadow-md px-8 pt-6 pb-8 mb-4"
@@ -202,14 +202,18 @@ const EditarCliente = () => {
                       htmlFor="nombre"
                     >
                       <Obligatorio>*</Obligatorio> Nombre
-                      {props.touched.nombre && props.errors.nombre ? (
+                      {
+                      props.touched.nombre && props.errors.nombre 
+                      ? 
+                      (
                         <Error className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
                           <p>
                             <span className="font-bold">Error: </span>
                             {props.errors.nombre}
                           </p>
                         </Error>
-                      ) : null}
+                      ) : null
+                      }
                     </label>
 
                     <input
