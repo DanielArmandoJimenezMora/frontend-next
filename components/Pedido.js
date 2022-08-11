@@ -187,13 +187,9 @@ const Pedido = ({ pedido }) => {
   
     // Funcion que modifica el color del pedido de acuerdo a su estado
   const clasePedido = () => {
-    if (estadoPedido === "PENDIENTE") {
-      setClase("border-l-yellow-500");
-    } else if (estadoPedido === "COMPLETADO") {
-      setClase("border-l-green-500");
-    } else {
-      setClase("border-l-red-700");
-    }
+    if (estadoPedido === "PENDIENTE") return setClase("border-l-yellow-500"); 
+    if (estadoPedido === "COMPLETADO") return setClase("border-l-green-500");
+    if (estadoPedido === "CANCELADO") return setClase("border-l-red-700");
   };
   
   return (
