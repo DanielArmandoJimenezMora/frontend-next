@@ -5,6 +5,14 @@ import PedidoContext from "../../context/pedidos/PedidoContext";
 import styled from "@emotion/styled";
 
 /* GraphQL */
+const OBTENER_USUARIO = gql`
+  query obtenerUsuario {
+    obtenerUsuario {
+      perfil
+    }
+  }
+`;
+
 const OBTENER_CLIENTES_USUARIO = gql`
   query ObtenerClientesVendedor {
     obtenerClientesVendedor {
@@ -16,6 +24,20 @@ const OBTENER_CLIENTES_USUARIO = gql`
       nombreNegocio
       email
       vendedor
+    }
+  }
+`;
+
+const OBTENER_CLIENTES = gql`
+  query obtenerClientes {
+    obtenerClientes {
+      id
+      nombre
+      apellido
+      nombreNegocio
+      telefono
+      direccion
+      email
     }
   }
 `;
@@ -35,6 +57,11 @@ function AsignarCliente() {
 
   // Consultar la base de datos
   const { data, loading, error } = useQuery(OBTENER_CLIENTES_USUARIO);
+  const datosClientes = useQuery(OBTENER_CLIENTES);
+  const dataC = datosClientes.data;
+  const loadingC = datosClientes.loading;
+  const datosU = useQuery(OBTENER_USUARIO);
+  const loadingU = datosU.loading;
 
   useEffect(() => {
     agregarCliente(cliente);
@@ -45,9 +72,11 @@ function AsignarCliente() {
   };
 
   // Resultados de la consulta
-  if (loading) return null;
+  if (loading || loadingC || loadingU) return null;
 
   const { obtenerClientesVendedor } = data;
+  const { obtenerClientes } = dataC;
+  const perfil = datosU.data.obtenerUsuario.perfil;
 
   return (
     <>
@@ -62,17 +91,31 @@ function AsignarCliente() {
         </svg>
         <p>1.- Asigna un Cliente al pedido</p>
       </Line>
-      <Select
-        className="mt-3 w-4/5"
-        options={obtenerClientesVendedor}
-        onChange={(opcion) => seleccionarCliente(opcion)}
-        getOptionValue={(opciones) => opciones.id}
-        getOptionLabel={(opciones) =>
-          `Cliente: ${opciones.nombre} ${opciones.apellido} - Nombre del negocio: ${opciones.nombreNegocio}`
-        }
-        placeholder="Busque o seleccione el cliente"
-        noOptionsMessage={() => "No hay resultados"}
-      />
+      {perfil === "Administrador" ? (
+        <Select
+          className="mt-3 w-4/5"
+          options={obtenerClientes}
+          onChange={(opcion) => seleccionarCliente(opcion)}
+          getOptionValue={(opciones) => opciones.id}
+          getOptionLabel={(opciones) =>
+            `Cliente: ${opciones.nombre} ${opciones.apellido} - Nombre del negocio: ${opciones.nombreNegocio}`
+          }
+          placeholder="Busque o seleccione el cliente"
+          noOptionsMessage={() => "No hay resultados"}
+        />
+      ) : (
+        <Select
+          className="mt-3 w-4/5"
+          options={obtenerClientesVendedor}
+          onChange={(opcion) => seleccionarCliente(opcion)}
+          getOptionValue={(opciones) => opciones.id}
+          getOptionLabel={(opciones) =>
+            `Cliente: ${opciones.nombre} ${opciones.apellido} - Nombre del negocio: ${opciones.nombreNegocio}`
+          }
+          placeholder="Busque o seleccione el cliente"
+          noOptionsMessage={() => "No hay resultados"}
+        />
+      )}
     </>
   );
 }

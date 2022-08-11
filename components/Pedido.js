@@ -54,8 +54,6 @@ const Pedido = ({ pedido }) => {
   const datosU = useQuery(OBTENER_USUARIO);
   const loadingU = useQuery(OBTENER_USUARIO);
 
-  const perfil = datosU.data.obtenerUsuario.perfil;
-
   // Mutation para cambiar el estado de un pedido
   const [actualizarPedido] = useMutation(ACTUALIZAR_PEDIDO);
   const [eliminarPedido] = useMutation(ELIMINAR_PEDIDO, {
@@ -121,7 +119,7 @@ const Pedido = ({ pedido }) => {
           },
         },
       });
-      setEstadoPedido(data.actualizarPedido.estado);
+      setEstadoPedido(nuevoEstado);
     } catch (error) {
       console.log(error);
     }

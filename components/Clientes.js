@@ -18,6 +18,14 @@ const ELIMINAR_CLIENTE = gql`
   }
 `;
 
+const OBTENER_USUARIO = gql`
+  query obtenerUsuario {
+    obtenerUsuario {
+      perfil
+    }
+  }
+`;
+
 const OBTENER_CLIENTES_USUARIO = gql`
   query ObtenerClientesVendedor {
     obtenerClientesVendedor {
@@ -29,6 +37,20 @@ const OBTENER_CLIENTES_USUARIO = gql`
       nombreNegocio
       email
       vendedor
+    }
+  }
+`;
+
+const OBTENER_TODOS_CLIENTES = gql`
+  query obtenerClientes {
+    obtenerClientes {
+      id
+      nombre
+      apellido
+      nombreNegocio
+      telefono
+      direccion
+      email
     }
   }
 `;
@@ -81,6 +103,26 @@ const Cliente = ({ cliente }) => {
       });
     },
   });
+  const [eliminarClientesAdmin] = useMutation(ELIMINAR_CLIENTE, {
+    update(cache) {
+      // Obtener copia del objeto de cache
+      const { obtenerClientes } = cache.readQuery({
+        query: OBTENER_TODOS_CLIENTES,
+      });
+      // Reescribir el cache
+      cache.writeQuery({
+        query: OBTENER_TODOS_CLIENTES,
+        data: {
+          obtenerClientes: obtenerClientes.filter(
+            (clienteActual) => clienteActual.id !== cliente.id
+          ),
+        },
+      });
+    },
+  });
+  const datosU = useQuery(OBTENER_USUARIO);
+  const dataU = datosU.data;
+  const loadingU = datosU.loading;
   //Data pedidos
   const dataPedido = useQuery(OBTENER_PEDIDOS);
   const dataP = dataPedido.data;
@@ -103,18 +145,34 @@ const Cliente = ({ cliente }) => {
       cancelButtonText: "No, cancelar",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        try {
-          // Eliminar por id y despues mostrar una alerta
-          const { data } = await eliminarCliente({
-            variables: {
-              id,
-            },
-          });
-          //console.log(data);
+        if (perfil === "Administrador") {
+          try {
+            // Eliminar por id y despues mostrar una alerta
+            const { data } = await eliminarClientesAdmin({
+              variables: {
+                id,
+              },
+            });
+            //console.log(data);
 
-          Swal.fire("¡Eliminado!", data.eliminarCliente, "success");
-        } catch (error) {
-          console.log(error);
+            Swal.fire("¡Eliminado!", data.eliminarCliente, "success");
+          } catch (error) {
+            console.log(error);
+          }
+        } else {
+          try {
+            // Eliminar por id y despues mostrar una alerta
+            const { data } = await eliminarCliente({
+              variables: {
+                id,
+              },
+            });
+            //console.log(data);
+
+            Swal.fire("¡Eliminado!", data.eliminarCliente, "success");
+          } catch (error) {
+            console.log(error);
+          }
         }
       }
     });
@@ -151,6 +209,7 @@ const Cliente = ({ cliente }) => {
   };
 
   existePedido();
+  const perfil = dataU.obtenerUsuario.perfil;
 
   return (
     <tr>

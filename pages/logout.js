@@ -74,7 +74,7 @@ export default function Pedidos() {
       client.clearStore();
       router.push("/login");
       return <p>Cargando...</p>;
-    }, 3200);
+    }, 3000);
   };
   return (
     <div>

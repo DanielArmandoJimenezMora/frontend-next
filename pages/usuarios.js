@@ -111,7 +111,7 @@ export default function Index() {
     });
   } else if (selects === "Perfil") {
     resultados = usuarios.filter((usuario) => {
-      usuario.perfil.toLowerCase().includes(search.toLowerCase());
+      return usuario.perfil.toLowerCase().includes(search.toLowerCase());
     });
   }
 
@@ -126,7 +126,6 @@ export default function Index() {
     router.push("/login");
     return <NoSesion />;
   }
-
   return (
     <div>
       <Layout>
@@ -191,11 +190,11 @@ export default function Index() {
               <Table className="table-auto w-full w-lg">
                 <thead className="bg-white border-b-2 border-slate-300 ">
                   <tr className="text-stone-900">
-                    <th className="w-1/5 py-2 border px-4 py-2">Nombre</th>
-                    <th className="w-1/5 py-2 border px-4 py-2">Género</th>
-                    <th className="w-1/5 py-2 border px-4 py-2">Correo</th>
-                    <th className="w-1/5 py-2 border px-4 py-2">Rol</th>
-                    <th className="w-1/5 py-2 border px-4 py-2">Acciones</th>
+                    <th className="w-1/5 border px-4 py-2">Nombre</th>
+                    <th className="w-1/5 border px-4 py-2">Género</th>
+                    <th className="w-1/5 border px-4 py-2">Correo</th>
+                    <th className="w-1/5 border px-4 py-2">Rol</th>
+                    <th className="w-1/5 border px-4 py-2">Acciones</th>
                   </tr>
                 </thead>
 

@@ -21,11 +21,20 @@ const AUTENTICAR_USUARIO = gql`
 const Bgb2 = styled.div`
   background-image: linear-gradient(to top, #96e4de 0%, #fff 100%);
   height: 100vh;
+  display: flex;
 `;
 const Bgb = styled.div`
   background: url("/img/bg.jpeg");
   height: 100vh;
   display: flex;
+`;
+
+const LogoResponsive = styled.div`
+  display: none;
+  @media screen and (max-width: 1000px) {
+    display: block;
+    margin-top: 2rem;
+  }
 `;
 
 const LoginContainer = styled.div`
@@ -39,8 +48,8 @@ const LoginContainer = styled.div`
   border-radius: 30px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   @media screen and (max-width: 1000px) {
-    width: 70%;
-    margin-top: 3em;
+    width: 90%;
+    height: 40rem;
   }
 `;
 
@@ -73,8 +82,12 @@ const Title = styled.h1`
   font-weight: 300;
   letter-spacing: 1px;
   color: #108598;
-  padding-top: 5rem;
+  padding-top: 4rem;
   padding-bottom: 2rem;
+  @media screen and (max-width: 1000px) {
+    padding-top: 0px;
+    margin-bottom: -1rem;
+  }
 `;
 
 const InputsContainer = styled.form`
@@ -100,6 +113,7 @@ const Input = styled.input`
     border: 2px solid #108598;
   }
 `;
+
 const Label = styled.label`
   display: none;
 `;
@@ -110,11 +124,14 @@ const Btn = styled.button`
   font-size: 1em;
   letter-spacing: 1px;
   color: #fff;
-  border-radius: 5px;
-  background-color: #108598;
+  background-color: #108598 !important;
+  border: solid 1px #108598;
+  border-radius: 6px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   &:hover {
     background-color: #0f7d8e;
+    font-size: 1.2em;
   }
 `;
 
@@ -141,14 +158,25 @@ const Load = styled.div`
 `;
 
 const Error = styled.div`
-  width: 90%;
+  width: 85%;
+  padding: 0px;
+  padding-left: 20px;
   text-align: left;
-  padding: 8px;
+  border-radius: 6px;
+  border-left: 4px solid rgb(220 38 38);
+  background-color: rgb(254 202 202);
+  color: rgb(220 38 38); ;
 `;
 
-const Error2 = styled.div`
+const Success = styled.div`
   width: 90%;
-  padding: 8px;
+  padding: 0px;
+  text-align: center;
+  border-radius: 6px;
+  border-left: 4px solid rgb(34 197 94);
+  border-right: 4px solid rgb(34 197 94);
+  background-color: rgb(187 247 208);
+  color: rgb(34 197 94);
 `;
 
 /* Fin Estilos */
@@ -214,13 +242,13 @@ const Login = () => {
 
   const mostrarMensaje = () => {
     return mensaje === "Autenticando..." ? (
-      <Error2 className="py-2 px-3 w-full my-3 max-w-sm text-center mx-auto bg-green-100 border-l-4 border-green-500 text-green-700">
+      <Success className="py-2 px-3 w-full my-3 max-w-sm text-center mx-auto bg-green-100 border-l-4 border-green-500 text-green-700">
         <p>{mensaje}</p>
-      </Error2>
+      </Success>
     ) : (
-      <Error2 className="py-2 px-3 w-full my-3 max-w-sm text-center mx-auto bg-red-100 border-l-4 border-red-500 text-red-700">
+      <Error className="py-2 px-3 w-full my-3 max-w-sm text-center mx-auto bg-red-100 border-l-4 border-red-500 text-red-700">
         <p>{mensaje}</p>
-      </Error2>
+      </Error>
     );
   };
 
@@ -232,6 +260,9 @@ const Login = () => {
             <Image width={457} height={551} src="/img/lobo.png" />
           </ImageContainer>
           <LoginInfoContainer>
+            <LogoResponsive>
+              <Image width={120} height={120} src="/icon-192x192.png" />
+            </LogoResponsive>
             <Title>Iniciar sesión</Title>
             <InputsContainer onSubmit={formik.handleSubmit}>
               <Label htmlFor="nombre">Usuario</Label>

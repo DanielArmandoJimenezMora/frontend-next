@@ -43,7 +43,7 @@ const Usuario = ({ usuario }) => {
       cache.writeQuery({
         query: OBTENER_USUARIOS,
         data: {
-          obtenerUsuario: obtenerUsuarios.filter(
+          obtenerUsuarios: obtenerUsuarios.filter(
             (usuarioActual) => usuarioActual.id !== usuario.id
           ),
         },

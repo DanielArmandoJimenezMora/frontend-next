@@ -12,10 +12,6 @@ import NoSesion from "../components/NoSesion";
 const OBTENER_USUARIO = gql`
   query obtenerUsuario {
     obtenerUsuario {
-      id
-      nombre
-      apellido
-      genero
       perfil
     }
   }
@@ -48,6 +44,31 @@ const OBTENER_PEDIDOS = gql`
   }
 `;
 
+const OBTENER_TODOS_PEDIDOS = gql`
+  query obtenerPedidos {
+    obtenerPedidos {
+      id
+      pedido {
+        id
+        cantidad
+        nombre
+        precio
+      }
+      cliente {
+        nombre
+        apellido
+        nombreNegocio
+        direccion
+        telefono
+        email
+      }
+      vendedor
+      total
+      estado
+    }
+  }
+`;
+
 /* Estilos  */
 const ContainerPed = styled.div`
   height: 75vh;
@@ -69,6 +90,9 @@ const Select = styled.select`
 export default function Pedidos() {
   const router = new useRouter();
   const { data, loading, client } = useQuery(OBTENER_PEDIDOS);
+  const datosPedidos = useQuery(OBTENER_TODOS_PEDIDOS);
+  const dataP = datosPedidos.data;
+  const loadingP = datosPedidos.loading;
   const datosU = useQuery(OBTENER_USUARIO);
   const dataU = datosU.data;
   const loadingU = datosU.loading;
@@ -81,6 +105,13 @@ export default function Pedidos() {
       query: OBTENER_PEDIDOS,
     });
     setPedidos(data.obtenerPedidosVendedor);
+  };
+
+  const showDataAdmin = async () => {
+    const { data } = await client.query({
+      query: OBTENER_TODOS_PEDIDOS,
+    });
+    setPedidos(dataP.obtenerPedidos);
   };
 
   const searcher = ({ target }) => {
@@ -136,17 +167,22 @@ export default function Pedidos() {
   }
 
   useEffect(() => {
-    showData();
+    if (perfil === "Administrador") {
+      showDataAdmin();
+    } else {
+      showData();
+    }
   });
 
-  if (loading || loadingU) return <Cargando />;
+  if (loading || loadingU || loadingP) return <Cargando />;
 
-  if (!data.obtenerPedidosVendedor || !dataU.obtenerUsuario) {
+  if (!data.obtenerPedidosVendedor || !dataU.obtenerUsuario || loadingP) {
     client.clearStore();
     router.push("/login");
     return <NoSesion />;
   }
 
+  const perfil = dataU.obtenerUsuario.perfil;
 
   return (
     <div>
