@@ -97,16 +97,6 @@ const Pedido = ({ pedido }) => {
   const [estadoPedido, setEstadoPedido] = useState(estado);
   const [clase, setClase] = useState("");
 
-  // Funcion que modifica el color del pedido de acuerdo a su estado
-  const clasePedido = () => {
-    if (estadoPedido === "PENDIENTE") {
-      setClase("border-l-yellow-500");
-    } else if (estadoPedido === "COMPLETADO") {
-      setClase("border-l-green-500");
-    } else {
-      setClase("border-l-red-700");
-    }
-  };
 
   const cambiarEstadoPedido = async (nuevoEstado) => {
     try {
@@ -194,6 +184,18 @@ const Pedido = ({ pedido }) => {
     }
     clasePedido();
   }, [estadoPedido]);
+  
+    // Funcion que modifica el color del pedido de acuerdo a su estado
+  const clasePedido = () => {
+    if (estadoPedido === "PENDIENTE") {
+      setClase("border-l-yellow-500");
+    } else if (estadoPedido === "COMPLETADO") {
+      setClase("border-l-green-500");
+    } else {
+      setClase("border-l-red-700");
+    }
+  };
+  
   return (
     <div
       className={` border-1 border-grey-200 border-l-8 ${clase}  mb-4 bg-white rounded p-6 md:grid  md:grid-cols-2 md:gap-4 shadow-lg`}
