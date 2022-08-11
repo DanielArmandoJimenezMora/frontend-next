@@ -218,13 +218,13 @@ export default function Proveedores() {
               <Table className="table-auto w-full w-lg">
                 <thead className="bg-white border-b-2 border-slate-300 ">
                   <tr className="text-stone-900">
-                    <th className="w-1/5 py-2 border px-4 py-2">Nombre</th>
-                    <th className="w-1/5 py-2 border px-4 py-2">Teléfono</th>
-                    <th className="w-1/5 py-2 border px-4 py-2">Dirección</th>
-                    <th className="w-1/5 py-2  border px-4 py-2">Email</th>
-                    <th className="w-1/5 py-2  border px-4 py-2">Categorías</th>
+                    <th className="w-1/5 border px-4 py-2">Nombre</th>
+                    <th className="w-1/5 border px-4 py-2">Teléfono</th>
+                    <th className="w-1/5 border px-4 py-2">Dirección</th>
+                    <th className="w-1/5  border px-4 py-2">Email</th>
+                    <th className="w-1/5  border px-4 py-2">Categorías</th>
                     {perfil === "Administrador" ? (
-                      <th className="w-1/5 py-2 border px-4 py-2">Acciones</th>
+                      <th className="w-1/5 border px-4 py-2">Acciones</th>
                     ) : null}
                   </tr>
                 </thead>
