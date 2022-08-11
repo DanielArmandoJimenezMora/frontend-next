@@ -91,7 +91,7 @@ const EditarCliente = () => {
   let id = pid;
 
   // Consultar para obtener el cliente
-  const { data, loading, error, client } = useQuery(OBTENER_CLIENTE, {
+  const { data, loading, client } = useQuery(OBTENER_CLIENTE, {
     variables: { id },
   });
   const datosC = useQuery(OBTENER_CLIENTES_USUARIO);
