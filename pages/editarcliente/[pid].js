@@ -202,7 +202,8 @@ const EditarCliente = () => {
                       htmlFor="nombre"
                     >
                       <Obligatorio>*</Obligatorio> Nombre
-                      {props.touched.nombre && props.errors.nombre ? (
+                      {props.touched.nombre && props.errors.nombre ? 
+                      (
                         <Error className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
                           <p>
                             <span className="font-bold">Error: </span>
