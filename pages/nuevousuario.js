@@ -301,7 +301,7 @@ const NuevoUsuario = () => {
                 >
                   {ver === false ? (
                     <svg
-                      class="w-6 h-6"
+                      className="w-6 h-6"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -315,7 +315,7 @@ const NuevoUsuario = () => {
                     </svg>
                   ) : (
                     <svg
-                      class="w-5 h-5"
+                      className="w-5 h-5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
