@@ -145,7 +145,7 @@ const EditarCliente = () => {
       genero,
     } = valores;
     try {
-      const { data } = await actualizarCliente({
+      await actualizarCliente({
         variables: {
           id,
           input: {
