@@ -17,6 +17,7 @@
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@lottiefiles/react-lottie-player": "^3.4.7",
+    "apollo-link": "^1.2.14",
     "apollo-link-context": "^1.0.20",
     "axios": "^0.27.2",
     "cors": "^2.8.5",
